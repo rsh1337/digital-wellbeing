@@ -9,11 +9,16 @@ import {
 	Icon,
 	VStack,
 	Text,
-	Heading
+	Heading,
+	Menu,
+	MenuButton,
+	MenuList,
+	MenuItem
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import NextLink from 'next/link';
 import { BiHomeAlt } from 'react-icons/bi';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 const container = {
 	hidden: { opacity: 1, scale: 0 },
 	visible: {
@@ -71,16 +76,33 @@ function NavbarMobile() {
 								</NextLink>
 							</motion.ul>
 							<motion.ul variants={itemMobile}>
-								<NextLink href="/">
-									<Button variant="ghost" w={14} h={14}>
+								<Menu>
+									<MenuButton
+										as={Button}
+										variant="ghost"
+										w={14}
+										h={14}
+									>
 										<VStack>
 											<Icon as={BiHomeAlt} h={7} w={7} />
 											<Text fontSize="xx-small">
-												Acasa
+												Informatii
 											</Text>
 										</VStack>
-									</Button>
-								</NextLink>
+									</MenuButton>
+									<MenuList>
+										<NextLink href="/negative" passHref>
+											<MenuItem>
+												Partile Negative
+											</MenuItem>
+										</NextLink>
+										<NextLink href="/positive" passHref>
+											<MenuItem>
+												Partile Pozitive
+											</MenuItem>
+										</NextLink>
+									</MenuList>
+								</Menu>
 							</motion.ul>
 							<motion.ul variants={itemMobile}>
 								<NextLink href="/">
@@ -88,23 +110,36 @@ function NavbarMobile() {
 										<VStack>
 											<Icon as={BiHomeAlt} h={7} w={7} />
 											<Text fontSize="xx-small">
-												Acasa
+												Sugestii
 											</Text>
 										</VStack>
 									</Button>
 								</NextLink>
 							</motion.ul>
 							<motion.ul variants={itemMobile}>
-								<NextLink href="/">
-									<Button variant="ghost" w={14} h={14}>
+								<Menu>
+									<MenuButton
+										as={Button}
+										variant="ghost"
+										w={14}
+										h={14}
+									>
 										<VStack>
 											<Icon as={BiHomeAlt} h={7} w={7} />
 											<Text fontSize="xx-small">
-												Acasa
+												Login
 											</Text>
 										</VStack>
-									</Button>
-								</NextLink>
+									</MenuButton>
+									<MenuList>
+										<NextLink href="/signin" passHref>
+											<MenuItem>Sign In</MenuItem>
+										</NextLink>
+										<NextLink href="/register" passHref>
+											<MenuItem>Register</MenuItem>
+										</NextLink>
+									</MenuList>
+								</Menu>
 							</motion.ul>
 						</HStack>
 					</motion.ul>
@@ -134,7 +169,7 @@ function NavbarDesktop() {
 						<motion.ul variants={itemDesktop}>
 							<Box borderRadius="full">
 								<NextLink href="/">
-									<Heading>Digital Wellbeing</Heading>
+									<Heading size={{md: "md", lg: "lg"}}>Digital Wellbeing</Heading>
 								</NextLink>
 							</Box>
 						</motion.ul>
@@ -142,19 +177,11 @@ function NavbarDesktop() {
 
 						<HStack spacing={2}>
 							<motion.ul variants={itemDesktop}>
-								<Button variant="ghost">Test</Button>
+								<Button variant="ghost">Partile Negative</Button>
+								<Button variant="ghost">Partile Pozitive</Button>
 							</motion.ul>
 							<motion.ul variants={itemDesktop}>
-								<Button variant="ghost">Test</Button>
-							</motion.ul>
-							<motion.ul variants={itemDesktop}>
-								<Button variant="ghost">Test</Button>
-							</motion.ul>
-							<motion.ul variants={itemDesktop}>
-								<Button variant="ghost">Test</Button>
-							</motion.ul>
-							<motion.ul variants={itemDesktop}>
-								<Button variant="ghost">Test</Button>
+								<Button variant="ghost">Sugestii</Button>
 							</motion.ul>
 						</HStack>
 						<Spacer />

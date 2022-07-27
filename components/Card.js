@@ -11,42 +11,22 @@ import {
 	Text,
 	VStack
 } from '@chakra-ui/react';
-import {ArrowUpIcon, ArrowDownIcon} from '@chakra-ui/icons'
 
-export default function Card() {
+export default function Card({descriere, titlu}) {
 	return (
-		<Box maxW="full" borderWidth="1px" borderRadius="lg" overflow="hidden">
-			<HStack spacing={3}>
+		<Box maxW="full" borderWidth="1px" borderRadius="lg" overflow="hidden" mb={4}>
+            <Center>
+			<HStack spacing={3} ml={3} mr={3}>
 				<Center>
                     <VStack>
-                    <Heading size="lg">Tdsadd asdas dadasd sada sdsadas dest</Heading>
+                    <Heading size="lg">{titlu}</Heading>
 					<Text noOfLines={3}>
-						dsadasdasda sdsa dbas hdbash dbdhsab asdasd sadas
-						dasdasdas dasdasd asdas dasd asdasd asdasd asdas dasd
-						asdas dasdasd sadasd asd asdasda sdasda sdas dsadas
-						dasdasdasd asdas dasdas das ddha sdbsah bdas hdb as hd
+                        {descriere}
 					</Text>
                     </VStack>
 				</Center>
-				<Spacer />
-				<Center>
-					<VStack>
-                        <VStack>
-                            <Button variant="outline">
-                            <ArrowUpIcon />
-                            </Button>
-                            <Text>32</Text>
-                        </VStack>
-                        <Divider />
-						<VStack>
-                        <Text>22</Text>
-                        <Button variant="outline">
-                        <ArrowDownIcon />
-                        </Button>
-                        </VStack>
-					</VStack>
-				</Center>
 			</HStack>
+            </Center>
 		</Box>
 	);
 }

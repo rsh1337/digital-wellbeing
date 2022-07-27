@@ -20,7 +20,7 @@ export default function CreateInvitatie() {
 	//
 	const createSugestie = async (titlu, descriere, poze, e) => {
 		e.preventDefault();
-		const res = await fetch('/api/sugestie/createsugestie', {
+		const res = await fetch('/api/sugestie/sugestii', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

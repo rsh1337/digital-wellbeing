@@ -14,7 +14,7 @@ import {
 
 export default function Card({descriere, titlu}) {
 	return (
-		<Box maxW="full" borderWidth="1px" borderRadius="lg" overflow="hidden" mb={4}>
+		<Box>
             <Center>
 			<HStack spacing={3} ml={3} mr={3}>
 				<Center>

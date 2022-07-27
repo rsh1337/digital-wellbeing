@@ -157,6 +157,15 @@ function NavbarDesktop() {
 								<Button variant="ghost">Test</Button>
 							</motion.ul>
 						</HStack>
+						<Spacer />
+						<HStack spacing={2}>
+							<motion.ul variants={itemDesktop}>
+								<Button variant="ghost">Login</Button>
+							</motion.ul>
+							<motion.ul variants={itemDesktop}>
+								<Button variant="ghost">Register</Button>
+							</motion.ul>
+						</HStack>
 					</Flex>
 				</motion.ul>
 			</Container>

@@ -1,5 +1,6 @@
 import {
 	Box,
+	Button,
 	Center,
 	CircularProgress,
 	Container,
@@ -10,14 +11,14 @@ import {
 	Tabs,
 	Text
 } from '@chakra-ui/react';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Router from 'next/router';
 import useSWR from 'swr';
 import Login from '../components/Login';
 import { fetcher } from '../lib/fetcher';
-import NextLink from 'next/link'
+import NextLink from 'next/link';
 import Card from '../components/Card';
-import DeleteButton from '../components/DeleteButton';
+
 export default function Signin() {
 	const { data: session, status } = useSession();
 	const { data, error } = useSWR('/api/sugestie/sugestii', fetcher);
@@ -57,10 +58,17 @@ export default function Signin() {
 										{(() => {
 											if (sugestie.verify === false) {
 												return (
-													<NextLink
-														href={`sugestie/${sugestie._id}`}
+                                                    <NextLink
+                                                    href={`sugestie/${sugestie._id}`}
+                                                >
+													<Box
+														key={sugestie._id}
+														maxW="full"
+														borderWidth="1px"
+														borderRadius="lg"
+														overflow="hidden"
+														mb={4}
 													>
-														<Box key={sugestie._id} maxW="full" borderWidth="1px" borderRadius="lg" overflow="hidden" mb={4}>
 															<Card
 																titlu={
 																	sugestie.titlu
@@ -69,11 +77,8 @@ export default function Signin() {
 																	sugestie.descriere
 																}
 															/>
-                                                            <Center mt={3}>
-                                                            <DeleteButton />
-                                                            </Center>
-														</Box>
-													</NextLink>
+													</Box>
+                                                    </NextLink>
 												);
 											}
 										})()}
@@ -85,6 +90,11 @@ export default function Signin() {
 							</TabPanel>
 						</TabPanels>
 					</Tabs>
+                    <Center>
+                    <Button mt={6} colorScheme="red" onClick={() => signOut()}>
+            Deconecteaza-te
+          </Button>
+                    </Center>
 				</Container>
 			</Box>
 		);

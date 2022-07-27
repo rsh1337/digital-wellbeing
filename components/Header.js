@@ -105,7 +105,7 @@ function NavbarMobile() {
 								</Menu>
 							</motion.ul>
 							<motion.ul variants={itemMobile}>
-								<NextLink href="/">
+								<NextLink href="/sugestie">
 									<Button variant="ghost" w={14} h={14}>
 										<VStack>
 											<Icon as={BiHomeAlt} h={7} w={7} />
@@ -177,8 +177,14 @@ function NavbarDesktop() {
 
 						<HStack spacing={2}>
 							<motion.ul variants={itemDesktop}>
+								<NextLink href="/negative" passHref>
 								<Button variant="ghost">Partile Negative</Button>
+								</NextLink>
+							</motion.ul>
+							<motion.ul variants={itemDesktop}>
+								<NextLink href="/pozitive" passHref>
 								<Button variant="ghost">Partile Pozitive</Button>
+								</NextLink>
 							</motion.ul>
 							<motion.ul variants={itemDesktop}>
 								<Button variant="ghost">Sugestii</Button>

@@ -196,7 +196,9 @@ function NavbarDesktop() {
 								<Button variant="ghost">Login</Button>
 							</motion.ul>
 							<motion.ul variants={itemDesktop}>
-								<Button variant="ghost">Register</Button>
+								<NextLink href="/register" passHref>
+									<Button variant="ghost">Register</Button>
+								</NextLink>
 							</motion.ul>
 						</HStack>
 					</Flex>

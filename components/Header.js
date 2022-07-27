@@ -99,16 +99,33 @@ function NavbarMobile() {
 									</NextLink>
 								</motion.ul>
 								<motion.ul variants={itemMobile}>
-									<NextLink href="/sugestie">
-										<Button variant="ghost" w={14} h={14}>
+								<Menu>
+										<MenuButton
+											as={Button}
+											variant="ghost"
+											w={14}
+											h={14}
+										>
 											<VStack>
 												<Icon as={BiHomeAlt} h={7} w={7} />
 												<Text fontSize="xx-small">
 													Sugestii
 												</Text>
 											</VStack>
-										</Button>
-									</NextLink>
+										</MenuButton>
+										<MenuList>
+											<NextLink href="/sugestie" passHref>
+												<MenuItem>
+													Sugestii
+												</MenuItem>
+											</NextLink>
+											<NextLink href="/createsugestie" passHref>
+												<MenuItem>
+													Creaza Sugestie
+												</MenuItem>
+											</NextLink>
+										</MenuList>
+									</Menu>
 								</motion.ul>
 							</HStack>
 						</motion.ul>
@@ -162,7 +179,14 @@ function NavbarDesktop() {
 								</NextLink>
 							</motion.ul>
 							<motion.ul variants={itemDesktop}>
+								<NextLink href="/sugestie" passHref>
 								<Button variant="ghost">Sugestii</Button>
+								</NextLink>
+							</motion.ul>
+							<motion.ul variants={itemDesktop}>
+								<NextLink href="/createsugestie" passHref>
+								<Button variant="ghost">Creaza Sugestie</Button>
+								</NextLink>
 							</motion.ul>
 						</HStack>
 					</Flex>

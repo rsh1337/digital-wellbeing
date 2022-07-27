@@ -2,7 +2,7 @@ import { Box, Center, CircularProgress, Container } from '@chakra-ui/react';
 import Card from '../components/Card';
 import { fetcher } from '../lib/fetcher';
 import useSWR from 'swr';
-import NextLink from 'next/link'
+import NextLink from 'next/link';
 export default function Sugestii() {
 	const { data, error } = useSWR('/api/sugestie/sugestii', fetcher);
 	if (error) return <div>Failed to load</div>;
@@ -23,14 +23,22 @@ export default function Sugestii() {
 				mb={{ base: '100px', md: '5' }}
 			>
 				{data.sugestii.map((sugestie) => (
-                    <NextLink href={`sugestie/${sugestie._id}`}>
-                    <Box key={sugestie._id}>
-					<Card
-						titlu={sugestie.titlu}
-						descriere={sugestie.descriere}
-					/>
-                    </Box>
-                    </NextLink>
+					<Box>
+						{(() => {
+							if (sugestie.verify === true) {
+								return (
+									<NextLink href={`sugestie/${sugestie._id}`}>
+										<Box key={sugestie._id}>
+											<Card
+												titlu={sugestie.titlu}
+												descriere={sugestie.descriere}
+											/>
+										</Box>
+									</NextLink>
+								);
+							}
+						})()}
+					</Box>
 				))}
 			</Container>
 		</Box>

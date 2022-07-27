@@ -13,6 +13,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    invitation: {
+        type: String,
+        required: true
+    },
     since: {
         type: Date,
         default: Date.now

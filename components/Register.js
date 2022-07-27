@@ -11,20 +11,22 @@ import {
 import Router from 'next/router';
 import { useState } from 'react';
 
+
 export default function Register() {
 	const toast = useToast();
 	const [email, setEmail] = useState('');
+	const [invitation, setInvitation] = useState('');
 	const [password, setPassword] = useState('');
 	const [name, setName] = useState('');
 	const [message, setMessage] = useState(null);
-	const registerUser = async (email, password, name, e) => {
+	const registerUser = async (email, password, name,invitation, e) => {
 		e.preventDefault();
 		const res = await fetch('/api/register', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ email, password, name })
+			body: JSON.stringify({ email, password,invitation, name })
 		});
 		let data = await res.json();
 		if (data.message) {
@@ -38,7 +40,7 @@ export default function Register() {
 			});
 		}
 		if (data.msgsg == 'success') {
-			Router.push('/');
+			Router.push('/admin');
 			return toast({
 				title: 'Cont Creat.',
 				description: 'Contul tau a fost creat cu succes.',
@@ -60,7 +62,7 @@ export default function Register() {
 						placeholder="Ion Popescu"
 						name="name"
 						value={name}
-						onChange={(e) => setNume(e.target.value)}
+						onChange={(e) => setName(e.target.value)}
 					/>
 					<FormLabel htmlFor="email" mt={10}>
 						Adresa Email
@@ -72,6 +74,16 @@ export default function Register() {
 						name="email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
+					/>
+					<FormLabel htmlFor="invitation" mt={10}>
+						Invitatie
+					</FormLabel>
+					<Input
+						id="invitation"
+						type="invitation"
+						name="invitation"
+						value={invitation}
+						onChange={(e) => setInvitation(e.target.value)}
 					/>
 					<FormLabel htmlFor="password" mt={10}>
 						Parola
@@ -89,7 +101,7 @@ export default function Register() {
 					<Button
 						mt={6}
 						colorScheme="green"
-						onClick={(e) => registerUser(email, password, name, e)}
+						onClick={(e) => registerUser(email, password, name,invitation, e)}
 					>
 						Inregistreaza-te
 					</Button>

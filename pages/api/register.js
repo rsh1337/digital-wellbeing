@@ -1,9 +1,10 @@
 import bcrypt from "bcryptjs";
 import dbConnect from "../../lib/dbConnect";
 import User from "../../models/User";
+import Invitation from "../../models/Invitation"
 export default async function handler(req, res) {
   const { method } = req;
-  const { email, password, name } = req.body;
+  const { email, password, name, invitation } = req.body;
   const saltRounds = 10;
 
   await dbConnect();
@@ -18,10 +19,25 @@ export default async function handler(req, res) {
             message: "Emailul exista deja",
           });
         }
+        var invitationDuplicateCheck = await User.findOne({ invitation });
+        if (invitationDuplicateCheck) {
+          console.log("Invitation already used");
+          return res.status(400).json({
+            message: "Invitatia a fost folosita.",
+          });
+        }
+        var invitationExistCheck = await Invitation.findOne({ invitation });
+        if (!invitationExistCheck) {
+          console.log("Invitation Dosent Exist");
+          return res.status(400).json({
+            message: "Invitatie invalida.",
+          });
+        }
         var user = new User({
           email,
           password,
-          name
+          name,
+          invitation
         });
         if (!user.password){
           console.log("No Password")

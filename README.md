@@ -14,7 +14,7 @@
 
 <img src="readme/homepage.png" alt="screenshot">
 
-    Digital Wellbeing este un soft educational care are ca scop sa invete lumea cum sa se protejeze pe internet.
+Digital Wellbeing este un soft educational care are ca scop sa invete lumea cum sa se protejeze pe internet.
 
 ### Construit cu
 

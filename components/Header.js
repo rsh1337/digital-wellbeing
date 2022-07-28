@@ -17,7 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import NextLink from 'next/link';
-import { BiHomeAlt } from 'react-icons/bi';
+import {FcNegativeDynamic, FcPositiveDynamic, FcHome, FcInfo} from 'react-icons/fc'
 const container = {
 	hidden: { opacity: 1, scale: 0 },
 	visible: {
@@ -66,7 +66,7 @@ function NavbarMobile() {
 									<NextLink href="/">
 										<Button variant="ghost" w={14} h={14}>
 											<VStack>
-												<Icon as={BiHomeAlt} h={7} w={7} />
+												<Icon as={FcHome} h={7} w={7} />
 												<Text fontSize="xx-small">
 													Acasa
 												</Text>
@@ -78,7 +78,7 @@ function NavbarMobile() {
 									<NextLink href="/negative">
 										<Button variant="ghost" w={14} h={14}>
 											<VStack>
-												<Icon as={BiHomeAlt} h={7} w={7} />
+												<Icon as={FcNegativeDynamic} h={7} w={7} />
 												<Text fontSize="xx-small">
 													Partile Negative
 												</Text>
@@ -90,7 +90,7 @@ function NavbarMobile() {
 									<NextLink href="/pozitive">
 										<Button variant="ghost" w={14} h={14}>
 											<VStack>
-												<Icon as={BiHomeAlt} h={7} w={7} />
+												<Icon as={FcPositiveDynamic} h={7} w={7} />
 												<Text fontSize="xx-small">
 													Partile Pozitive
 												</Text>
@@ -107,7 +107,7 @@ function NavbarMobile() {
 											h={14}
 										>
 											<VStack>
-												<Icon as={BiHomeAlt} h={7} w={7} />
+												<Icon as={FcInfo} h={7} w={7} />
 												<Text fontSize="xx-small">
 													Sugestii
 												</Text>

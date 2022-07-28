@@ -35,6 +35,21 @@ import Sugestie from '../../models/Sugestie';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Image from 'next/image';
+import { Variants, motion } from 'framer-motion';
+const cardVariants = {
+	offscreen: {
+		y: 500
+	},
+	onscreen: {
+		y: 0,
+		rotate: 0,
+		transition: {
+			type: 'spring',
+			duration: 1,
+			bounce: 0
+		}
+	}
+};
 
 function VerifySugestie() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -191,7 +206,9 @@ function EditSugestie({ titluSugestie, descriereSugestie, pozeSugestie }) {
 						</Button>
 						<Button
 							colorScheme="blue"
-							onClick={(e) => editSugestie(titlu, descriere, poze, e)}
+							onClick={(e) =>
+								editSugestie(titlu, descriere, poze, e)
+							}
 						>
 							Editeaza Sugestia
 						</Button>
@@ -267,33 +284,44 @@ export default function Index({ sugestie }) {
 					mt={{ base: '80px', md: '100px' }}
 					mb={{ base: '100px', md: '5' }}
 				>
-					<Center>
-						<Heading>{sugestie.titlu}</Heading>
-					</Center>
-					<Text fontSize="xl" mt={40}>
-						{sugestie.descriere}
-					</Text>
-					{(() => {
-						if (!sugestie.poze === '') {
-							return (
-								<Carousel showThumbs={false}>
-									{sugestie.poze.map((data, index) => (
-										<Box key={index}>
-											<Image
-												src={data}
-												alt={sugestie.titlu}
-												width={1920}
-												height={1080}
-												priority
-												placeholder="blur"
-												blurDataURL={`/_next/image?url=${data}&w=16&q=1`}
-											/>
-										</Box>
-									))}
-								</Carousel>
-							);
-						}
-					})()}
+					<motion.div
+						className="card-container"
+						initial="offscreen"
+						whileInView="onscreen"
+						viewport={{ once: true, amount: 0.1 }}
+					>
+						<motion.div className="card" variants={cardVariants}>
+							<Center>
+								<Heading>{sugestie.titlu}</Heading>
+							</Center>
+							<Text fontSize="xl" mt={40}>
+								{sugestie.descriere}
+							</Text>
+							{(() => {
+								if (!sugestie.poze === '') {
+									return (
+										<Carousel showThumbs={false}>
+											{sugestie.poze.map(
+												(data, index) => (
+													<Box key={index}>
+														<Image
+															src={data}
+															alt={sugestie.titlu}
+															width={1920}
+															height={1080}
+															priority
+															placeholder="blur"
+															blurDataURL={`/_next/image?url=${data}&w=16&q=1`}
+														/>
+													</Box>
+												)
+											)}
+										</Carousel>
+									);
+								}
+							})()}
+						</motion.div>
+					</motion.div>
 				</Container>
 			</Box>
 		);
@@ -307,38 +335,53 @@ export default function Index({ sugestie }) {
 					mt={{ base: '80px', md: '100px' }}
 					mb={{ base: '100px', md: '5' }}
 				>
-					<Center>
-						<Heading>{sugestie.titlu}</Heading>
-					</Center>
-					<Text fontSize="xl" mt={40}>
-						{sugestie.descriere}
-					</Text>
-					{(() => {
-						if (sugestie.poze) {
-							return (
-								<Carousel showThumbs={false}>
-									{sugestie.poze.map((data, index) => (
-										<Box key={index}>
-											<Image
-												src={data}
-												alt={sugestie.titlu}
-												width={1920}
-												height={1080}
-												priority
-												placeholder="blur"
-												blurDataURL={`/_next/image?url=${data}&w=16&q=1`}
-											/>
-										</Box>
-									))}
-								</Carousel>
-							);
-						}
-					})()}
-					<Center>
-						<DeleteAlert />
-						<VerifySugestie />
-                        <EditSugestie titluSugestie={sugestie.titlu} descriereSugestie={sugestie.descriere} pozeSugestie={sugestie.poze}/>
-					</Center>
+					<motion.div
+						className="card-container"
+						initial="offscreen"
+						whileInView="onscreen"
+						viewport={{ once: true, amount: 0.1 }}
+					>
+						<motion.div className="card" variants={cardVariants}>
+							<Center>
+								<Heading>{sugestie.titlu}</Heading>
+							</Center>
+							<Text fontSize="xl" mt={40}>
+								{sugestie.descriere}
+							</Text>
+							{(() => {
+								if (sugestie.poze) {
+									return (
+										<Carousel showThumbs={false}>
+											{sugestie.poze.map(
+												(data, index) => (
+													<Box key={index}>
+														<Image
+															src={data}
+															alt={sugestie.titlu}
+															width={1920}
+															height={1080}
+															priority
+															placeholder="blur"
+															blurDataURL={`/_next/image?url=${data}&w=16&q=1`}
+														/>
+													</Box>
+												)
+											)}
+										</Carousel>
+									);
+								}
+							})()}
+							<Center>
+								<DeleteAlert />
+								<VerifySugestie />
+								<EditSugestie
+									titluSugestie={sugestie.titlu}
+									descriereSugestie={sugestie.descriere}
+									pozeSugestie={sugestie.poze}
+								/>
+							</Center>
+						</motion.div>
+					</motion.div>
 				</Container>
 			</Box>
 		);

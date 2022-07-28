@@ -1,13 +1,8 @@
 import {
 	Box,
-	Button,
 	Center,
-	Container,
-	Divider,
-	Flex,
 	Heading,
 	HStack,
-	Spacer,
 	Text,
 	VStack
 } from '@chakra-ui/react';

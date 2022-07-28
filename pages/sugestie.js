@@ -25,7 +25,7 @@ export default function Sugestii() {
 				{data.sugestii.map((sugestie) => (
 					<Box>
 						{(() => {
-							if (sugestie.verify === true) {
+							if (sugestie.verify === "true") {
 								return (
 									<NextLink href={`sugestie/${sugestie._id}`}>
 										<Box key={sugestie._id} maxW="full" borderWidth="1px" borderRadius="lg" overflow="hidden" mb={4}>

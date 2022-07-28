@@ -23,6 +23,7 @@ import {
 	ModalHeader,
 	ModalOverlay,
 	Text,
+	Textarea,
 	useDisclosure,
 	useToast
 } from '@chakra-ui/react';
@@ -31,113 +32,175 @@ import Router from 'next/router';
 import React, { useState } from 'react';
 import dbConnect from '../../lib/dbConnect';
 import Sugestie from '../../models/Sugestie';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Image from 'next/image';
 
-//   function EditModal({ numeLectie, imagineLectie, linkLectie }) {
-//     const { isOpen, onOpen, onClose } = useDisclosure();
-//     const toast = useToast();
-//     // Data
-//     const [nume, setNume] = useState( numeLectie );
-//     const [imagine, setImagine] = useState( imagineLectie );
-//     const [link, setLink] = useState( linkLectie );
-//     //
-//     const editLectie = async (nume, imagine, link, e) => {
-//       const lectieID = Router.query.id;
-//       e.preventDefault();
-//       const res = await fetch(`/api/lectii/${lectieID}`, {
-//         method: "PUT",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           nume,
-//           imagine,
-//           link,
-//         }),
-//       });
-//       let data = await res.json();
-//       if (data.message) {
-//         console.log(data.message);
-//         return toast({
-//           title: "Eroare",
-//           description: data.message,
-//           status: "error",
-//           duration: 9000,
-//           isClosable: true,
-//         });
-//       }
-//       if (data.messagee == "success") {
-//         Router.push(`/lectii/${lectieID}`)
-//         return toast({
-//           title: "Lectie Editata.",
-//           description: "Lectia a fost editata cu succes!",
-//           status: "success",
-//           duration: 9000,
-//           isClosable: true,
-//         });
-//       }
-//     };
-//     return (
-//       <Box>
-//         <Button onClick={onOpen} colorScheme="blue" mt={10}>
-//           Editeaza Lectia
-//         </Button>
+function VerifySugestie() {
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const toast = useToast();
+	// Data
+	const [verify, setVerify] = useState('true');
+	//
+	const VerifySugestie = async (verify, e) => {
+		const sugestieID = Router.query.id;
+		e.preventDefault();
+		const res = await fetch(`/api/sugestie/${sugestieID}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				verify
+			})
+		});
+		let data = await res.json();
+		if (data.message) {
+			console.log(data.message);
+			return toast({
+				title: 'Eroare',
+				description: data.message,
+				status: 'error',
+				duration: 9000,
+				isClosable: true
+			});
+		}
+		if (data.messagee == 'success') {
+			Router.push(`/admin`);
+			return toast({
+				title: 'Sugestie verificata.',
+				description: 'Sugestia a fost verificata cu succes!',
+				status: 'success',
+				duration: 9000,
+				isClosable: true
+			});
+		}
+	};
+	return (
+		<Box>
+			<Button
+				colorScheme="green"
+				onClick={(e) => VerifySugestie(verify, e)}
+				ml={3}
+				mt={10}
+			>
+				Verifica
+			</Button>
+		</Box>
+	);
+}
 
-//         <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} isCentered>
-//           <ModalOverlay />
-//           <ModalContent>
-//             <ModalHeader>Editeaza Lectia</ModalHeader>
-//             <ModalCloseButton />
-//             <ModalBody>
-//               <FormControl>
-//                 <FormLabel htmlFor="nume" mt={10}>
-//                   Nume
-//                 </FormLabel>
-//                 <Input
-//                   id="nume"
-//                   type="nume"
-//                   name="nume"
-//                   value={nume}
-//                   onChange={(e) => setNume(e.target.value)}
-//                 />
-//                 <FormLabel htmlFor="imagine" mt={10}>
-//                   Imagine
-//                 </FormLabel>
-//                 <Input
-//                   id="imagine"
-//                   type="imagine"
-//                   name="imagine"
-//                   value={imagine}
-//                   onChange={(e) => setImagine(e.target.value)}
-//                 />
-//                 <FormLabel htmlFor="link" mt={10}>
-//                   Link
-//                 </FormLabel>
-//                 <Input
-//                   id="link"
-//                   type="link"
-//                   name="link"
-//                   value={link}
-//                   onChange={(e) => setLink(e.target.value)}
-//                 />
-//               </FormControl>
-//             </ModalBody>
+function EditSugestie({ titluSugestie, descriereSugestie, pozeSugestie }) {
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const toast = useToast();
+	// Data
+	const [titlu, setTitlu] = useState(titluSugestie);
+	const [descriere, setDescriere] = useState(descriereSugestie);
+	const [poze, setPoze] = useState(pozeSugestie);
+	//
+	const editSugestie = async (titlu, descriere, poze, e) => {
+		const sugestieID = Router.query.id;
+		e.preventDefault();
+		const res = await fetch(`/api/sugestie/${sugestieID}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				titlu,
+				descriere,
+				poze
+			})
+		});
+		let data = await res.json();
+		if (data.message) {
+			console.log(data.message);
+			return toast({
+				title: 'Eroare',
+				description: data.message,
+				status: 'error',
+				duration: 9000,
+				isClosable: true
+			});
+		}
+		if (data.messagee == 'success') {
+			Router.push(`/sugestie/${sugestieID}`);
+			return toast({
+				title: 'Sugestie Editata.',
+				description: 'Sugestie a fost editata cu succes!',
+				status: 'success',
+				duration: 9000,
+				isClosable: true
+			});
+		}
+	};
+	return (
+		<Box>
+			<Button onClick={onOpen} colorScheme="blue" ml={3} mt={10}>
+				Editeaza
+			</Button>
 
-//             <ModalFooter>
-//               <Button colorScheme="red" mr={3} onClick={onClose}>
-//                 Close
-//               </Button>
-//               <Button
-//                 colorScheme="blue"
-//                 onClick={(e) => editLectie(nume, imagine, link, e)}
-//               >
-//                 Editeaza Lectia
-//               </Button>
-//             </ModalFooter>
-//           </ModalContent>
-//         </Modal>
-//       </Box>
-//     );
-//   }
+			<Modal
+				closeOnOverlayClick={false}
+				isOpen={isOpen}
+				onClose={onClose}
+				isCentered
+			>
+				<ModalOverlay />
+				<ModalContent>
+					<ModalHeader>Editeaza Sugestia</ModalHeader>
+					<ModalCloseButton />
+					<ModalBody>
+						<FormControl>
+							<FormLabel htmlFor="titlu" mt={10}>
+								Titlu
+							</FormLabel>
+							<Input
+								id="titlu"
+								type="titlu"
+								name="titlu"
+								value={titlu}
+								onChange={(e) => setTitlu(e.target.value)}
+							/>
+							<FormLabel htmlFor="descriere" mt={10}>
+								Descriere
+							</FormLabel>
+							<Textarea
+								id="descriere"
+								type="descriere"
+								name="descriere"
+								value={descriere}
+								onChange={(e) => setDescriere(e.target.value)}
+							/>
+							<FormLabel htmlFor="poze" mt={10}>
+								Poze
+							</FormLabel>
+							<Textarea
+								id="poze"
+								type="poze"
+								name="poze"
+								value={poze}
+								onChange={(e) => setPoze(e.target.value)}
+							/>
+						</FormControl>
+					</ModalBody>
+
+					<ModalFooter>
+						<Button colorScheme="red" mr={3} onClick={onClose}>
+							Close
+						</Button>
+						<Button
+							colorScheme="blue"
+							onClick={(e) => editSugestie(titlu, descriere, poze, e)}
+						>
+							Editeaza Sugestia
+						</Button>
+					</ModalFooter>
+				</ModalContent>
+			</Modal>
+		</Box>
+	);
+}
 
 function DeleteAlert() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -149,7 +212,7 @@ function DeleteAlert() {
 			await fetch(`/api/sugestie/${sugestieID}`, {
 				method: 'Delete'
 			});
-			Router.push('/sugestie');
+			Router.push('/admin');
 		} catch (error) {
 			console.log('Failed to delete the sugestie.');
 		}
@@ -210,35 +273,33 @@ export default function Index({ sugestie }) {
 					<Text fontSize="xl" mt={40}>
 						{sugestie.descriere}
 					</Text>
-                    {(() => {
-							if (sugestie.poze) {
-								return (
-									<Carousel showThumbs={false}>
-										{sugestie.poze.map((data, index) => (
-											<Box key={index}>
-												
-												<Image
-													src={data}
-													alt={proiect.titlu}
-													width={1920}
-													height={1080}
-													priority
-													placeholder="blur"
-													blurDataURL={`/_next/image?url=${data}&w=16&q=1`}
-												/>
-										
-											</Box>
-										))}
-									</Carousel>
-								);
-							}
-						})()}
+					{(() => {
+						if (!sugestie.poze === '') {
+							return (
+								<Carousel showThumbs={false}>
+									{sugestie.poze.map((data, index) => (
+										<Box key={index}>
+											<Image
+												src={data}
+												alt={sugestie.titlu}
+												width={1920}
+												height={1080}
+												priority
+												placeholder="blur"
+												blurDataURL={`/_next/image?url=${data}&w=16&q=1`}
+											/>
+										</Box>
+									))}
+								</Carousel>
+							);
+						}
+					})()}
 				</Container>
 			</Box>
 		);
 	}
 
-    if (status === 'authenticated') {
+	if (status === 'authenticated') {
 		return (
 			<Box>
 				<Container
@@ -252,32 +313,32 @@ export default function Index({ sugestie }) {
 					<Text fontSize="xl" mt={40}>
 						{sugestie.descriere}
 					</Text>
-                    {(() => {
-							if (sugestie.poze) {
-								return (
-									<Carousel showThumbs={false}>
-										{sugestie.poze.map((data, index) => (
-											<Box key={index}>
-												
-												<Image
-													src={data}
-													alt={proiect.titlu}
-													width={1920}
-													height={1080}
-													priority
-													placeholder="blur"
-													blurDataURL={`/_next/image?url=${data}&w=16&q=1`}
-												/>
-										
-											</Box>
-										))}
-									</Carousel>
-								);
-							}
-						})()}
-                        <Center>
-                            <DeleteAlert />
-                        </Center>
+					{(() => {
+						if (sugestie.poze) {
+							return (
+								<Carousel showThumbs={false}>
+									{sugestie.poze.map((data, index) => (
+										<Box key={index}>
+											<Image
+												src={data}
+												alt={sugestie.titlu}
+												width={1920}
+												height={1080}
+												priority
+												placeholder="blur"
+												blurDataURL={`/_next/image?url=${data}&w=16&q=1`}
+											/>
+										</Box>
+									))}
+								</Carousel>
+							);
+						}
+					})()}
+					<Center>
+						<DeleteAlert />
+						<VerifySugestie />
+                        <EditSugestie titluSugestie={sugestie.titlu} descriereSugestie={sugestie.descriere} pozeSugestie={sugestie.poze}/>
+					</Center>
 				</Container>
 			</Box>
 		);

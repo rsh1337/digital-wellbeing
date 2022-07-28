@@ -21,12 +21,8 @@ const SugestiiSchema = new mongoose.Schema({
         default: 0
     },
     verify:{
-        type: Boolean,
+        type: String,
         default: false
-    },
-    since: {
-        type: Date,
-        default: Date.now
     },
 })
 

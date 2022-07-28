@@ -56,7 +56,7 @@ export default function Signin() {
 								{data.sugestii.map((sugestie) => (
 									<Box key={sugestie._id}>
 										{(() => {
-											if (sugestie.verify === false) {
+											if (sugestie.verify === "false") {
 												return (
                                                     <NextLink
                                                     href={`sugestie/${sugestie._id}`}

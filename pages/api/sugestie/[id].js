@@ -23,6 +23,20 @@ export default async function handler(req, res) {
           res.status(400).json({ success: false });
         }
         break;
+        case "PUT":
+            try {
+              const verifySugestie = await Sugestie.findByIdAndUpdate(id, req.body, {
+                new: true,
+                runValidators: true,
+              });
+              if (!verifySugestie) {
+                return res.status(400).json({ message: 'Sugestia nu a putut fi verificata/editata' });
+              }
+              res.status(200).json({ messagee: 'success', data: verifySugestie });
+            } catch (error) {
+              res.status(400).json(error);
+            }
+            break;
       case "DELETE":
         try {
           const deleteSugestie = await Sugestie.deleteOne({ _id: id });
@@ -38,7 +52,6 @@ export default async function handler(req, res) {
         res.status(400).json({ success: false });
         break;
     }
-    console.log("Session", JSON.stringify(session, null, 2));
   } else {
     switch (method) {
       case "GET":

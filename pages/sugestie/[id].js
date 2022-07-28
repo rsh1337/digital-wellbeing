@@ -297,9 +297,6 @@ export default function Index({ sugestie }) {
 							<Text fontSize="xl" mt={40}>
 								{sugestie.descriere}
 							</Text>
-							{(() => {
-								if (!sugestie.poze === '') {
-									return (
 										<Carousel showThumbs={false}>
 											{sugestie.poze.map(
 												(data, index) => (
@@ -317,9 +314,6 @@ export default function Index({ sugestie }) {
 												)
 											)}
 										</Carousel>
-									);
-								}
-							})()}
 						</motion.div>
 					</motion.div>
 				</Container>
@@ -348,9 +342,6 @@ export default function Index({ sugestie }) {
 							<Text fontSize="xl" mt={40}>
 								{sugestie.descriere}
 							</Text>
-							{(() => {
-								if (sugestie.poze) {
-									return (
 										<Carousel showThumbs={false}>
 											{sugestie.poze.map(
 												(data, index) => (
@@ -368,9 +359,6 @@ export default function Index({ sugestie }) {
 												)
 											)}
 										</Carousel>
-									);
-								}
-							})()}
 							<Center>
 								<DeleteAlert />
 								<VerifySugestie />

@@ -45,7 +45,7 @@ export default function Sugestii() {
 				>
 					<motion.div className="card" variants={cardVariants}>
 						{data.sugestii.map((sugestie) => (
-							<Box>
+							<Box key={sugestie._id}>
 								{(() => {
 									if (sugestie.verify === 'true') {
 										return (

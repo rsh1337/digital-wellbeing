@@ -18,6 +18,7 @@ import Login from '../components/Login';
 import { fetcher } from '../lib/fetcher';
 import NextLink from 'next/link';
 import Card from '../components/Card';
+import CreateInvitatie from '../components/create_invitation';
 
 export default function Signin() {
 	const { data: session, status } = useSession();
@@ -86,7 +87,7 @@ export default function Signin() {
 								))}
 							</TabPanel>
 							<TabPanel>
-								<Text>Test hatzz invitatie</Text>
+								<CreateInvitatie/>
 							</TabPanel>
 						</TabPanels>
 					</Tabs>

@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 
-export default function CreateInvitatie() {
+export default function CreateSugestie() {
 	const toast = useToast();
 	// Data
 	const [titlu, setTitlu] = useState('');

@@ -155,9 +155,11 @@ function NavbarDesktop() {
 						<motion.ul variants={itemDesktop}>
 							<Box borderRadius="full">
 								<NextLink href="/">
-									<Heading size={{ md: 'md', lg: 'lg' }}>
+									<Button variant="outline" colorScheme="blue">
+									<Heading size={{ md: 'md', lg: 'lg' }} color="blue.700">
 										Digital Wellbeing
 									</Heading>
+									</Button>
 								</NextLink>
 							</Box>
 						</motion.ul>

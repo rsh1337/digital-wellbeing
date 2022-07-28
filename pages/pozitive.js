@@ -37,7 +37,7 @@ export default function Pozitive() {
 					viewport={{ once: true, amount: 0.1 }}
 				>
 					<motion.div className="card" variants={cardVariants}>
-						<Heading size="lg">
+						<Heading size="lg" color="blue.500">
 							Efectele pozitive create de tehnologie
 						</Heading>
 
@@ -48,7 +48,7 @@ export default function Pozitive() {
 							distanta de exemplu sa platim facturi, sa vedem
 							soldul cardului, inchidem/deschidem masina.
 						</Text>
-						<Heading size="md" mt={7} mb={7}>
+						<Heading size="md" mt={7} mb={7} color="blue.500">
 							Castigi timp
 						</Heading>
 						<Text fontSize="lg">
@@ -57,7 +57,7 @@ export default function Pozitive() {
 							locatiile, un telefon te poate duce oriunde doar
 							punand locatia unde doriti sa ajungeti.
 						</Text>
-						<Heading size="md" mt={7} mb={7}>
+						<Heading size="md" mt={7} mb={7} color="blue.500">
 							Inveti mai usor
 						</Heading>
 						<Text fontSize="lg">
@@ -65,7 +65,7 @@ export default function Pozitive() {
 							datorita aplicatiilor si jocurilor educative care
 							fac din procesul de invatare o joaca.
 						</Text>
-						<Heading size="md" mt={7} mb={7}>
+						<Heading size="md" mt={7} mb={7} color="blue.500">
 							Comunicare
 						</Heading>
 						<Text fontSize="lg">

@@ -37,7 +37,7 @@ export default function Negative() {
 					viewport={{ once: true, amount: 0.1 }}
 				>
 					<motion.div className="card" variants={cardVariants}>
-						<Heading size="lg">
+						<Heading size="lg" color="blue.500">
 							Efectele negative create de tehnologie
 						</Heading>
 
@@ -54,7 +54,7 @@ export default function Negative() {
 							semnificativ asupra dezvoltarii copiilor și
 							adolescentilor.
 						</Text>
-						<Heading size="md" mt={7} mb={7}>
+						<Heading size="md" mt={7} mb={7} color="blue.500">
 							Depresie si Anxietate
 						</Heading>
 						<Text fontSize="lg">
@@ -78,7 +78,7 @@ export default function Negative() {
 							reprezintă tipurile de interacțiuni pe care oamenii
 							simt că le au pe aceste platforme.
 						</Text>
-						<Heading size="md" mt={7} mb={7}>
+						<Heading size="md" mt={7} mb={7} color="blue.500">
 							Oboseala ochilor
 						</Heading>
 						<Text fontSize="lg">
@@ -95,7 +95,7 @@ export default function Negative() {
 							vizualizarea prea aproape sau prea departe, postura
 							incorecta.
 						</Text>
-						<Heading size="md" mt={7} mb={7}>
+						<Heading size="md" mt={7} mb={7} color="blue.500">
 							Insomnii
 						</Heading>
 						<Text fontSize="lg">

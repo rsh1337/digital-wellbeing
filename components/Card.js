@@ -14,7 +14,7 @@ export default function Card({descriere, titlu}) {
 			<HStack spacing={3} ml={3} mr={3}>
 				<Center>
                     <VStack>
-                    <Heading size="lg">{titlu}</Heading>
+                    <Heading size="lg" color="blue.700">{titlu}</Heading>
 					<Text noOfLines={3}>
                         {descriere}
 					</Text>

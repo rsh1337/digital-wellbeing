@@ -77,7 +77,7 @@ export default function Signin() {
 						viewport={{ once: true, amount: 0.1 }}
 					>
 						<motion.div className="card" variants={cardVariants}>
-							<Tabs variant="soft-rounded" colorScheme="green">
+							<Tabs variant="soft-rounded" colorScheme="blue">
 								<Center>
 									<TabList>
 										<Tab>Verificare Sugestii</Tab>

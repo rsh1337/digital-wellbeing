@@ -43,18 +43,18 @@ export default function Home() {
 						<motion.div className="card" variants={cardVariants}>
 							<VStack spacing={6}>
 								<NextLink href="/" passHref>
-									<Heading size="2xl">
+									<Heading size="2xl" color="blue.500">
 										Digital Wellbeing
 									</Heading>
 								</NextLink>
-								<Text fontSize="2xl">Ce este?</Text>
+								<Text fontSize="2xl" color="blue.600">Ce este?</Text>
 								<Text fontSize="xl">
 									Digital Wellbeing se refera la impactul{' '}
 									<Text as="b">tehnologiei</Text> asupra
 									mentalitatii, psihicului, socializarii si
 									sanatatii emotionale.
 								</Text>
-								<Text fontSize="2xl">Ce facem?</Text>
+								<Text fontSize="2xl" color="blue.600">Ce facem?</Text>
 								<Text fontSize="xl">
 									Prin aceasta aplicatie incercam sa ajutam
 									utilizatorii sa inteleaga partile negative

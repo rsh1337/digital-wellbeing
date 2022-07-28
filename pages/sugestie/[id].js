@@ -292,9 +292,9 @@ export default function Index({ sugestie }) {
 					>
 						<motion.div className="card" variants={cardVariants}>
 							<Center>
-								<Heading>{sugestie.titlu}</Heading>
+								<Heading color="blue.700">{sugestie.titlu}</Heading>
 							</Center>
-							<Text fontSize="xl" mt={40}>
+							<Text fontSize="xl" mt={{base: "10", md: "40"}}>
 								{sugestie.descriere}
 							</Text>
 										<Carousel showThumbs={false}>
@@ -337,7 +337,7 @@ export default function Index({ sugestie }) {
 					>
 						<motion.div className="card" variants={cardVariants}>
 							<Center>
-								<Heading>{sugestie.titlu}</Heading>
+								<Heading color="blue.700">{sugestie.titlu}</Heading>
 							</Center>
 							<Text fontSize="xl" mt={40}>
 								{sugestie.descriere}

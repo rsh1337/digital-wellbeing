@@ -1,4 +1,4 @@
-import { Box, Grid, VStack } from '@chakra-ui/layout';
+import { Box, Grid, VStack } from '@chakra-ui/react';
 import Head from 'next/head';
 import Header from './Header';
 

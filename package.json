@@ -10,29 +10,28 @@
 		"format": "prettier --write \"./**/*.{js,json}\""
 	},
 	"dependencies": {
-		"@chakra-ui/icons": "^2.1.1",
+		"@chakra-ui/icons": "^2.2.4",
 		"@chakra-ui/react": "^2.8.2",
-		"@emotion/react": "^11.11.4",
-		"@emotion/styled": "^11.11.5",
+		"@emotion/react": "^11.13.5",
+		"@emotion/styled": "^11.13.5",
 		"@loadable/component": "^5.16.4",
 		"bcryptjs": "^2.4.3",
-		"framer-motion": "^11.1.9",
-		"mongoose": "^8.8.3",
-		"next": "14.2.12",
+		"framer-motion": "^11.13.1",
+		"mongoose": "^8.8.4",
+		"next": "15.0.4",
 		"next-auth": "^4.24.10",
 		"next-pwa": "^5.6.0",
-		"pwa-asset-generator": "^6.3.1",
-		"react": "18.3.1",
-		"react-dom": "18.3.1",
-		"react-icons": "^5.2.1",
-		"react-ios-pwa-prompt": "^1.8.4",
+		"pwa-asset-generator": "^6.4.0",
+		"react": "19.0.0",
+		"react-dom": "19.0.0",
+		"react-icons": "^5.4.0",
 		"react-responsive-carousel": "^3.2.23",
-		"sharp": "^0.33.3",
+		"sharp": "^0.33.5",
 		"swr": "^2.2.5"
 	},
 	"devDependencies": {
-		"eslint": "9.2.0",
-		"eslint-config-next": "14.2.3",
-		"prettier": "^3.2.5"
+		"eslint": "9.16.0",
+		"eslint-config-next": "15.0.4",
+		"prettier": "^3.4.2"
 	}
 }

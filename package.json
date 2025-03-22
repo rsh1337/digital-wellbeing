@@ -12,26 +12,26 @@
 	"dependencies": {
 		"@chakra-ui/icons": "^2.2.4",
 		"@chakra-ui/react": "^2.8.2",
-		"@emotion/react": "^11.13.5",
-		"@emotion/styled": "^11.13.5",
+		"@emotion/react": "^11.14.0",
+		"@emotion/styled": "^11.14.0",
 		"@loadable/component": "^5.16.4",
-		"bcryptjs": "^2.4.3",
-		"framer-motion": "^11.13.1",
-		"mongoose": "^8.8.4",
-		"next": "15.1.2",
-		"next-auth": "^4.24.10",
+		"bcryptjs": "^3.0.2",
+		"framer-motion": "^12.5.0",
+		"mongoose": "^8.12.2",
+		"next": "15.2.3",
+		"next-auth": "^4.24.11",
 		"next-pwa": "^5.6.0",
-		"pwa-asset-generator": "^6.4.0",
+		"pwa-asset-generator": "^7.0.0",
 		"react": "19.0.0",
 		"react-dom": "19.0.0",
-		"react-icons": "^5.4.0",
+		"react-icons": "^5.5.0",
 		"react-responsive-carousel": "^3.2.23",
 		"sharp": "^0.33.5",
-		"swr": "^2.2.5"
+		"swr": "^2.3.3"
 	},
 	"devDependencies": {
-		"eslint": "9.16.0",
-		"eslint-config-next": "15.0.4",
-		"prettier": "^3.4.2"
+		"eslint": "9.23.0",
+		"eslint-config-next": "15.2.3",
+		"prettier": "^3.5.3"
 	}
 }
